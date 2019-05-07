@@ -260,6 +260,7 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
     else:
         # Without teacher forcing: use its own predictions as the next input
         for di in range(target_length):
+			#uncomment the line below when running for attn dec
             #decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden, encoder_outputs)
             decoder_output, decoder_hidden = decoder(decoder_input, decoder_hidden)
             topv, topi = decoder_output.topk(1)
@@ -367,6 +368,9 @@ def evaluate(encoder, decoder, sentence, max_length=MAX_LENGTH):
         decoder_attentions = torch.zeros(max_length, max_length)
 
         for di in range(max_length):
+			#uncomment the two lines when running with attn dec
+			#decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden, encoder_outputs)
+            #decoder_attentions[di] = decoder_attention.data
             decoder_output, decoder_hidden = decoder(decoder_input, decoder_hidden)            
             topv, topi = decoder_output.data.topk(1)
             if topi.item() == EOS_token:
@@ -426,6 +430,8 @@ hidden_size = 256
 
 encoder1 = EncoderRNN(input_lang.n_words, hidden_size).to(device)
 decoder1 = DecoderRNN(hidden_size, output_lang.n_words).to(device)
+#uncomment when running with attn dec
+#decoder1 = AttnDecoderRNN(hidden_size, output_lang.n_words, dropout_p=0.1).to(device)
 
 trainIters(encoder1, decoder1, 60, print_every=3000)
 evaluateRandomly(encoder1, decoder1)
