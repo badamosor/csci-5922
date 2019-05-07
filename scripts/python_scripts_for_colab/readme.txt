@@ -1,4 +1,4 @@
-arabic_seq2seq_attn_char_based.py: Character-based seq2seq file
+arabic_seq2seq_char_based.py: Character-based seq2seq file
 arabic_seq2seq_trans.py: Word-based seq2seq file
 
 In order to run these file
