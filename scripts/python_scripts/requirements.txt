@@ -1,0 +1,16 @@
+These scripts were created and tested on Ubuntu 18.04.
+In order to install and execute the scripts, followings 
+should be installed.
+
+- pip
+- curl
+- anaconda 
+
+Follow next instructions to install anaconda:
+
+1. curl -O https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
+2. bash Anaconda3-4.3.1-Linux-x86_64.sh
+3. source ~/.bashrc
+4. export PATH=~/anaconda3/bin:$PATH
+5. Check the intallation with "conda list"
+
