@@ -11,4 +11,4 @@ ipynb_files: Includes jupyter notebook version of files  we used for training an
 
 results: Includes our experiment results
 
-scripts: Includes python scripts
+scripts: Includes python scripts and scripts for Google colab
